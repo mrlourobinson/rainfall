@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  div#map
+
+  script. 
+    var response = !{JSON.stringify(response)};
+    var map = L.map('map').setView([51.511927507281236, -0.1141320414001342], 12);
+
+    map.locate({setView: true, maxZoom: 12});
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/mrlourobinson/ckzbfy4dd002i14qe4dqv6ouy/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibXJsb3Vyb2JpbnNvbiIsImEiOiJjazhoN21pZHcwM3N5M2xueWI2MWVnYW1iIn0.1TQwNXFaX3mLslkh0uGaew', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 16,
+      tileSize: 512,
+      zoomOffset: -1,
+      }).addTo(map);
+
+    var rvIcon = L.icon({
+      iconUrl: './images/rainfall_viewer_icon.png',
+      shadowUrl: '',
+
+      iconSize:     [40, 40], // size of the icon
+      iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
+      popupAnchor:  [0, -25] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var customOptions =
+      {
+      'maxWidth': '400',
+      'width': '200',
+      'className' : 'popupCustom'
+      }
+
+    response.forEach(station => {
+      var lat = station['lat']
+      var lon = station['long']
+
+      if(typeof lat == 'number') {
+          const marker = L.marker([lat,lon], {icon: rvIcon})
+            .bindPopup(
+              '<a href="/station/' + station['stationReference'] + '">' + station['label'] + '</a>',
+              customOptions
+              )
+            .addTo(map);
+          }
+
+    })
+
+
+
+
+
+
+  
