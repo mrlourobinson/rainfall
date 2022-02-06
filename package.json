@@ -5,6 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "engines": {
+    "node": "16.13.2"
+  },
   "dependencies": {
     "axios": "^0.25.0",
     "cookie-parser": "~1.4.4",
@@ -22,5 +25,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrlourobinson/rainfall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrlourobinson/rainfall/issues"
+  },
+  "homepage": "https://github.com/mrlourobinson/rainfall#readme",
   "description": ""
 }
