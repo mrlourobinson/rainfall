@@ -1,6 +1,9 @@
 extends layout
+block variables
+    - var title = 'Station readings'
 
 block content
+  title ASDJ
   div.station-container
     div.recent
       p= 'It has rained ' + total_values + 'mm since ' + minDate
@@ -18,7 +21,7 @@ block content
       var width=window.innerWidth * 0.75;
       var height=window.innerHeight * 0.6;
 
-      var margin = {top: 20, right: 20, bottom: 50, left: 70}
+      var margin = {top: 20, right: 20, bottom: 50, left: 40}
       var svg = d3.select(".graph")
         .append("svg")
         .attr('height', height)
@@ -36,7 +39,7 @@ block content
       // set the ranges
       var x = d3.scaleTime().range([0, width - (margin.left + margin.right)]);
       var y = d3.scaleLinear().range([height - (margin.top + margin.bottom), 0]);
-      var dot = d3.scaleLinear().range([0,30]);
+      var dot = d3.scaleLinear().range([1,30]);
 
       // define the line
       var valueline = d3.line()
@@ -74,5 +77,8 @@ block content
       svg.append("g")
           .attr('class','axis')
           .call(d3.axisLeft(y));
+
+    div.attribution
+      p Source: This uses Environment Agency flood and river level data from the real-time data API (Beta)
 
       

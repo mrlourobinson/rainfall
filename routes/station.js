@@ -43,7 +43,8 @@ router.get('/station/:id', function(req, res, next) {
                               total_values: total,
                               minDate: minDate,
                               maxDate: maxDate,
-                              maxTime: maxTime});
+                              maxTime: maxTime,
+                              title: station});
     });
   
 });

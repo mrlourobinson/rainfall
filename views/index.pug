@@ -1,4 +1,6 @@
 extends layout
+block variables
+    - var title = 'Rainfall viewer'
 
 block content
   div#map
@@ -10,7 +12,7 @@ block content
     map.locate({setView: true, maxZoom: 12});
 
     L.tileLayer('https://api.mapbox.com/styles/v1/mrlourobinson/ckzbfy4dd002i14qe4dqv6ouy/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibXJsb3Vyb2JpbnNvbiIsImEiOiJjazhoN21pZHcwM3N5M2xueWI2MWVnYW1iIn0.1TQwNXFaX3mLslkh0uGaew', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      attribution: 'Map data &copy; This uses <a href="https://environment.data.gov.uk/">Environment Agency</a> flood and river level data from the real-time data API (Beta) <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 16,
       tileSize: 512,
       zoomOffset: -1,
@@ -38,7 +40,7 @@ block content
       if(typeof lat == 'number') {
           const marker = L.marker([lat,lon], {icon: rvIcon})
             .bindPopup(
-              '<a href="/station/' + station['stationReference'] + '">' + station['label'] + '</a>',
+              '<a href="/station/' + station['stationReference'] + '">' + 'View rainfall readings' + '</a>',
               customOptions
               )
             .addTo(map);
