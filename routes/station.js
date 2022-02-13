@@ -15,9 +15,35 @@ router.get('/station/:id', function(req, res, next) {
 
   axios.get(url, options)
     .then((response) => {
-      console.log(response);
+      var readings = response.data.items
+
+      var total = readings.map(read => read.value).reduce((tot, read) => read + tot).toLocaleString(
+        undefined, // leave undefined to use the visitor's browser 
+                   // locale or a string like 'en-US' to override it.
+        { minimumFractionDigits: 2 }
+      );
+
+      let values  = readings.map(function(v) {
+        var date = new Date(v.dateTime)
+        return new Date(v.dateTime);
+      });
+      var minDate=new Date(Math.min.apply(null,values)).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+      
+      var maxDate=new Date(Math.max.apply(null,values)).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+
+      if (maxDate === new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})) {
+        maxDate = "today"
+      }
+
+      
+      var maxTime=new Date(Math.max.apply(null,values)).toLocaleTimeString('en-us', { hour: '2-digit', minute: '2-digit'})
+
      
-      res.render('station', { readings:  response.data.items});
+      res.render('station', { readings:  readings, 
+                              total_values: total,
+                              minDate: minDate,
+                              maxDate: maxDate,
+                              maxTime: maxTime});
     });
   
 });

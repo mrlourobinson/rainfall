@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "engines": {
     "node": "16.13.2"
@@ -16,6 +16,7 @@
     "express": "~4.16.1",
     "heroku": "^7.59.2",
     "http-errors": "~1.6.3",
+    "intl": "^1.2.5",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "request": "^2.88.2",
@@ -25,7 +26,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrlourobinson/rainfall.git"
