@@ -21,13 +21,17 @@ html, body {
   left: 0;
   z-index: 999;
   width: 100vw;
-  height: 45px;
+  height: 3em;
   align-items: center;
 
 }
 
+.axis {
+  font-size: 1em;
+}
+
 .logo {
-  height: 35px;
+  height: 80%;
   margin-top: 10px;
   margin-bottom: auto;
   display: block;
@@ -73,4 +77,9 @@ a {
     background: #e0e0e0;
     border-radius: 0%;
     color: #234c5e;
+}
+
+.marker {
+  width: 4rem;
+  height: 4rem;
 }
