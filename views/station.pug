@@ -3,7 +3,8 @@ block variables
     - var title = 'Station readings'
 
 block content
-  title ASDJ
+
+
   div.station-container
     div.recent
       p= 'It has rained ' + total_values + 'mm since ' + minDate
@@ -31,8 +32,7 @@ block content
               "translate(" + margin.left + "," + margin.top + ")");;
 
       var read = !{JSON.stringify(readings)};
-      console.log(read)
-      
+
       // parse the date / time
       var parseTime = d3.utcParse("%Y-%m-%dT%H:%M:%S%Z")
 
@@ -81,4 +81,4 @@ block content
     div.attribution
       p Source: This uses Environment Agency flood and river level data from the real-time data API (Beta)
 
-      
+  script(src='../javascripts/interactive.js')
