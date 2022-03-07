@@ -9,7 +9,7 @@ router.get('/station/:id', function(req, res, next) {
 
   const options = {
     params: {
-      '_limit':'10000'
+      '_limit':'2000'
       }
   };
 
